@@ -448,7 +448,7 @@ public class Board extends JPanel {
         if ("Classic".equals(Selectedboard)) {
             for (int r = 0; r < rows; r++) {
                 for (int c = 0; c < cols; c++) {
-                    g2d.setColor((c + r) % 2 == 0 ? Color.getHSBColor(129, 182, 76) : Color.getHSBColor(255, 255, 217));
+                    g2d.setColor((c + r) % 2 == 0 ?Color.getHSBColor(255, 255, 217) : Color.getHSBColor(129, 182, 76) );
                     g2d.fillRect(c * tileSize, r * tileSize, tileSize, tileSize);
                 }
             }

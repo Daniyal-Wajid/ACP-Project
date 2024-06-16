@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BoardsWindow extends JFrame {
-    private static String selection = "Classic"; // Default selection
+    private static String selection = "Classic";
     private JButton selectedButton;
     private JLabel imageLabel;
 

@@ -1,7 +1,8 @@
 package Menus_Windows;
 
 import Chess.GameMain;
-import Stats_Window.Stats;
+import Socket.ChessClient;
+import Stats_Window.Statistics;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -47,6 +48,7 @@ public class MainMenu extends JFrame {
         JButton playButton = createButton("Play");
         JButton statsButton = createButton("Stats");
         JButton optionsButton = createButton("Options");
+        JButton helpButton = createButton("Help");
         JButton exitButton = createButton("Exit");
 
         playButton.addActionListener(e -> {
@@ -56,10 +58,10 @@ public class MainMenu extends JFrame {
             });
         });
 
-        statsButton.addActionListener(e ->{
+        statsButton.addActionListener(e -> {
             SwingUtilities.invokeLater(() -> {
-                Stats s = new Stats();
-                s.createAndShowGUI();
+                Statistics stats = new Statistics();
+                stats.setVisible(true);
             });
         });
 
@@ -68,11 +70,14 @@ public class MainMenu extends JFrame {
             optionsWindow.setVisible(true);
         });
 
+        helpButton.addActionListener(e -> ChessClient.startHelp(this));
+
         exitButton.addActionListener(e -> System.exit(0));
 
         buttonPanel.add(playButton, gbc);
         buttonPanel.add(statsButton, gbc);
         buttonPanel.add(optionsButton, gbc);
+        buttonPanel.add(helpButton, gbc);
         buttonPanel.add(exitButton, gbc);
     }
 
@@ -95,7 +100,7 @@ public class MainMenu extends JFrame {
         Media media = new Media(new File(videoPath).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
-        mediaPlayer.setVolume(0.2);
+        mediaPlayer.setVolume(0);
 
         // Loop the video
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(javafx.util.Duration.ZERO));
@@ -116,3 +121,5 @@ public class MainMenu extends JFrame {
         });
     }
 }
+
+
